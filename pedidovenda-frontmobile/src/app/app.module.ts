@@ -1,6 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule } from "@angular/common/http";
-import { ErrorHandler, NgModule } from "@angular/core";
+import { LOCALE_ID, ErrorHandler, NgModule } from "@angular/core";
 import { IonicApp, IonicErrorHandler, IonicModule } from "ionic-angular";
 
 import { MyApp } from "./app.component";
@@ -15,6 +15,11 @@ import { ClienteService } from "../services/domain/cliente.service";
 import { AuthInterceptorProvider } from "../interceptors/auth-interceptor";
 import { ProdutoService } from "../services/domain/produto.service";
 
+import ptBr from "@angular/common/locales/pt";
+import { registerLocaleData } from "@angular/common";
+
+registerLocaleData(ptBr);
+
 @NgModule({
   declarations: [MyApp],
   imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(MyApp)],
@@ -24,6 +29,7 @@ import { ProdutoService } from "../services/domain/produto.service";
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+    { provide: LOCALE_ID, useValue: "pt" },
     AuthInterceptorProvider,
     ErrorInterceptorProvider,
     AuthService,
