@@ -1,0 +1,28 @@
+page-home {
+  h3 {
+    text-align: center;
+  }
+
+  img {
+    width: 200px;
+    align-self: center;
+    margin: auto;
+    display: block;
+    padding: 10px;
+  }
+}
+
+.btn-entrar {
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.versao-text {
+  margin-top: 25px;
+  text-align: center;
+
+  span {
+    font-size: 12px;
+    font-weight: bold;
+  }
+}
