@@ -33,4 +33,51 @@ export class CartService {
     this.storageService.setCart(cart);
     return cart;
   }
+
+  removeProduto(produto: ProdutoDTO): Cart {
+    let cart = this.getCart();
+    let position = cart.itens.findIndex((p) => p.produto.id == produto.id);
+    if (position != -1) {
+      cart.itens.splice(position, 1);
+    }
+
+    this.storageService.setCart(cart);
+    return cart;
+  }
+
+  increseQuantity(produto: ProdutoDTO): Cart {
+    let cart = this.getCart();
+    let position = cart.itens.findIndex((p) => p.produto.id == produto.id);
+    if (position != -1) {
+      cart.itens[position].quantidade++;
+    }
+
+    this.storageService.setCart(cart);
+    return cart;
+  }
+
+  decreaseQuantity(produto: ProdutoDTO): Cart {
+    let cart = this.getCart();
+    let position = cart.itens.findIndex((p) => p.produto.id == produto.id);
+    if (position != -1) {
+      cart.itens[position].quantidade--;
+      if (cart.itens[position].quantidade < 1) {
+        cart = this.removeProduto(produto);
+      }
+    }
+
+    this.storageService.setCart(cart);
+    return cart;
+  }
+
+  total(): number {
+    let cart = this.getCart();
+    let soma = 0;
+
+    for (var i = 0; i < cart.itens.length; i++) {
+      soma += cart.itens[i].produto.preco * cart.itens[i].quantidade;
+    }
+
+    return soma;
+  }
 }
