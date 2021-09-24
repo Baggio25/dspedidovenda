@@ -17,6 +17,7 @@ import { ProdutoService } from "../services/domain/produto.service";
 
 import ptBr from "@angular/common/locales/pt";
 import { registerLocaleData } from "@angular/common";
+import { CartService } from "../services/domain/cart.service";
 
 registerLocaleData(ptBr);
 
@@ -37,6 +38,7 @@ registerLocaleData(ptBr);
     StorageService,
     ClienteService,
     ProdutoService,
+    CartService,
   ],
 })
 export class AppModule {}
