@@ -10,8 +10,8 @@ import { AuthService } from "../../services/auth.service";
 })
 export class HomePage {
   credenciais: CredenciaisDTO = {
-    email: "",
-    senha: "",
+    email: "rodrigobaggio.precisa@gmail.com",
+    senha: "123456",
   };
 
   constructor(
